@@ -1,6 +1,6 @@
 const WeatherDetails = ({ weather }) => {
   return (
-    <div className="d-flex justify-content-center mt-2">
+    <div className="d-flex justify-content-center mt-2 details-section">
       <div className="d-flex flex-column justify-content-center pe-3 text-center">
         <h3 className="h6 m-0">CLOUDS</h3>
         <p className="m-0">{weather.clouds.all}%</p>

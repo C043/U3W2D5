@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Welcome = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const location = localStorage.getItem("Location");
+    if (location) {
+      navigate("/" + location);
+    }
+  }, []);
+
   return (
     <Container>
       <div className="d-flex justify-content-center mt-5 mb-3">

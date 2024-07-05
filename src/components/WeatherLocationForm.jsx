@@ -9,7 +9,8 @@ const WeatherLocationForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    navigate("/details/" + location);
+    localStorage.setItem("Location", location);
+    navigate("/" + location);
   };
 
   return (

@@ -4,6 +4,9 @@ body {
   background-color: #fefefe;
   color: #441000;
   .graphic {
+    animation: fade-in 1000ms 500ms;
+    transition: all;
+    animation-fill-mode: both;
     width: 500px;
     height: 500px;
     border-radius: 50%;
@@ -19,10 +22,31 @@ body {
     }
   }
   .next-up-section {
-    overflow-x: scroll;
+    animation: fade-in 1000ms 1500ms;
+    transition: all 500ms;
+    animation-fill-mode: both;
+    @media (max-width: 1024px) {
+      overflow-x: scroll;
+    }
     .next-up {
       width: 100px;
       height: 100px;
     }
+  }
+  .details-section {
+    animation: fade-in 1000ms 2500ms;
+    transition: all 500ms;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    translate: 0 -50px;
+    opacity: 0;
+  }
+  100% {
+    translate: 0 0;
+    opacity: 1;
   }
 }

@@ -1,14 +1,23 @@
+import { useState } from "react";
+
 const LocationHeader = ({ weather }) => {
-  const today = new Date();
-  const hours = today.getHours();
-  const minutes = today.getMinutes();
+  const [time, setTime] = useState("");
+  const getTime = () => {
+    setInterval(() => {
+      const today = new Date();
+      const hours = today.getHours();
+      const minutes = today.getMinutes();
+      setTime(hours + ":" + minutes);
+    }, 1000);
+  };
+  useState(() => {
+    getTime();
+  }, []);
   return (
     <div className="graphic d-flex flex-column justify-content-center align-items-center bg-warning">
       <h2 className="m-0">{weather.name}</h2>
       <p className="temperature m-0">{Math.floor(weather.main.temp)}C°</p>
-      <p className="m-0 fs-4">
-        {hours}:{minutes}
-      </p>
+      <p className="m-0 fs-4">{time}</p>
       <p className="fs-4 m-0">
         {weather.weather[0].main}
         <span>
