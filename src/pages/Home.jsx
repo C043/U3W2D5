@@ -1,7 +1,7 @@
 import WeatherLocationForm from "../components/WeatherLocationForm";
 
-const Home = () => {
-  return <WeatherLocationForm />;
+const Home = ({ theme }) => {
+  return <WeatherLocationForm theme={theme} />;
 };
 
 export default Home;

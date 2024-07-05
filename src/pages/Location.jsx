@@ -5,7 +5,7 @@ import LocationHeader from "../components/LocationHeader";
 import ForeCast from "../components/ForeCast";
 import WeatherDetails from "../components/WeatherDetails";
 
-const Location = () => {
+const Location = ({ theme }) => {
   const params = useParams();
 
   const [weather, setWeather] = useState(null);
@@ -81,12 +81,12 @@ const Location = () => {
       <Row className="justify-content-center align-items-center">
         {weather && futureWeather ? (
           <>
-            <LocationHeader weather={weather} />
-            <ForeCast futureWeather={futureWeather.list} />
+            <LocationHeader weather={weather} theme={theme} />
+            <ForeCast futureWeather={futureWeather.list} theme={theme} />
             <WeatherDetails weather={weather} />
           </>
         ) : (
-          <Spinner variant="warning" className="mt-5" />
+          <Spinner variant={theme === "light" ? "warning" : "primary"} className="mt-5" />
         )}
       </Row>
     </Container>
