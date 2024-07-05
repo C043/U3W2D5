@@ -1,8 +1,8 @@
 const LocationHeader = ({ weather }) => {
   return (
-    <div className="d-flex flex-column">
-      <h1 className="mt-5">{weather.name}</h1>
-      <p className="fs-1 m-0">{Math.floor(weather.main.temp)}C°</p>
+    <div className="graphic d-flex flex-column justify-content-center align-items-center">
+      <h2 className="m-0">{weather.name}</h2>
+      <p className="temperature m-0">{Math.floor(weather.main.temp)}C°</p>
       <p className="fs-4 m-0">
         {weather.weather[0].main}
         <span>

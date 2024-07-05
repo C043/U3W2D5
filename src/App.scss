@@ -3,10 +3,20 @@
 body {
   background-color: #fefefe;
   color: #441000;
-  h1 {
+  .graphic {
+    width: 30vw;
+    height: 30vw;
+    background-color: #fbc125;
+    border-radius: 50%;
+    .temperature {
+      font-size: 6em;
+    }
   }
-  .temperature {
+  .next-up {
+    width: 100px;
+    height: 100px;
+    p {
+      color: #88610d;
+    }
   }
-  /*   color: #9b8558;
- */
 }

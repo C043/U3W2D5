@@ -3,6 +3,8 @@ import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import LocationHeader from "../components/LocationHeader";
 import ForeCast from "../components/ForeCast";
+import Graphic from "../components/Graphic";
+import WeatherLocationForm from "../components/WeatherLocationForm";
 
 const Location = () => {
   const params = useParams();
@@ -80,11 +82,8 @@ const Location = () => {
       <Row className="justify-content-center align-items-center">
         {weather && futureWeather ? (
           <>
-            <Col xs={12}>
-              <LocationHeader weather={weather} />
-
-              <ForeCast futureWeather={futureWeather.list} />
-            </Col>
+            <LocationHeader weather={weather} />
+            <ForeCast futureWeather={futureWeather.list} />
           </>
         ) : (
           <Spinner variant="warning" className="mt-5" />

@@ -26,7 +26,7 @@ const WeatherLocationForm = () => {
         </Form.Group>
 
         <Button variant="warning" type="submit" className="d-block mx-auto">
-          Submit
+          Search
         </Button>
       </Form>
     </Container>
