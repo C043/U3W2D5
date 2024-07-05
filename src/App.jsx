@@ -7,7 +7,7 @@ import { useState } from "react";
 import ErrorPage from "./pages/ErrorPage";
 
 function App() {
-  const [theme, setTheme] = useState("day");
+  const [theme, setTheme] = useState("light");
   const getTime = () => {
     setInterval(() => {
       const today = new Date();
@@ -17,6 +17,7 @@ function App() {
   };
   useState(() => {
     getTime();
+    console.log(theme);
   }, []);
 
   return (

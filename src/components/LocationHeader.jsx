@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const LocationHeader = ({ weather }, { theme }) => {
+const LocationHeader = ({ weather }) => {
   const [time, setTime] = useState("");
   const getTime = () => {
     setInterval(() => {
@@ -17,13 +17,7 @@ const LocationHeader = ({ weather }, { theme }) => {
     getTime();
   }, []);
   return (
-    <div
-      className={
-        theme === "light"
-          ? "graphic d-flex flex-column justify-content-center align-items-center "
-          : "graphic d-flex flex-column justify-content-center align-items-center "
-      }
-    >
+    <div className="graphic d-flex flex-column justify-content-center align-items-center">
       <h2 className="m-0">{weather.name}</h2>
       <p className="temperature m-0">{Math.floor(weather.main.temp)}C°</p>
       <p className="m-0 fs-4">{time}</p>

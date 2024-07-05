@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Spinner } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { Button, Container, Row, Spinner } from "react-bootstrap";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import LocationHeader from "../components/LocationHeader";
 import ForeCast from "../components/ForeCast";
 import WeatherDetails from "../components/WeatherDetails";
@@ -83,12 +83,17 @@ const Location = ({ theme }) => {
 
   return (
     <Container>
-      <Row className="justify-content-center align-items-center">
+      <Row className="justify-content-center align-items-center justify-content-center">
         {weather && futureWeather ? (
           <>
-            <LocationHeader weather={weather} theme={theme} />
-            <ForeCast futureWeather={futureWeather.list} theme={theme} />
-            <WeatherDetails weather={weather} />
+            <LocationHeader weather={weather} />
+            <ForeCast futureWeather={futureWeather.list} />
+            <WeatherDetails weather={weather} theme={theme} />
+            <div className="d-flex justify-content-start position-fixed bottom-0 start-0 p-0 ms-2 mb-2 go-back">
+              <NavLink to={"/"} className={theme === "light" ? "btn bg-warning " : "btn btn-primary"}>
+                Change Location
+              </NavLink>
+            </div>
           </>
         ) : (
           <Spinner variant={theme === "light" ? "warning" : "primary"} className="mt-5" />

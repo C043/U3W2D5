@@ -36,6 +36,11 @@ body {
     transition: all 500ms;
     animation-fill-mode: both;
   }
+  .go-back {
+    animation: fade-in 1000ms 3500ms;
+    transition: all 500ms;
+    animation-fill-mode: both;
+  }
 }
 
 @keyframes fade-in {
