@@ -14,9 +14,8 @@ const WeatherLocationForm = () => {
 
   return (
     <Container>
-      <Form className="mt-5" onSubmit={e => handleSubmit(e)}>
+      <Form onSubmit={e => handleSubmit(e)}>
         <Form.Group className="mb-3" controlId="formLocation">
-          <Form.Label>Location</Form.Label>
           <Form.Control
             type="text"
             value={location}
@@ -26,7 +25,7 @@ const WeatherLocationForm = () => {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="warning" type="submit" className="d-block mx-auto">
           Submit
         </Button>
       </Form>

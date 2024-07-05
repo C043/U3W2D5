@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Container, Spinner } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import LocationHeader from "../components/LocationHeader";
+import ForeCast from "../components/ForeCast";
 
 const Location = () => {
   const params = useParams();
@@ -74,12 +75,22 @@ const Location = () => {
     fetchWeather();
   }, []);
 
-  return weather ? (
+  return (
     <Container>
-      <LocationHeader weather={weather} />
+      <Row className="justify-content-center align-items-center">
+        {weather && futureWeather ? (
+          <>
+            <Col xs={12}>
+              <LocationHeader weather={weather} />
+
+              <ForeCast futureWeather={futureWeather.list} />
+            </Col>
+          </>
+        ) : (
+          <Spinner variant="warning" className="mt-5" />
+        )}
+      </Row>
     </Container>
-  ) : (
-    <Spinner variant="primary" />
   );
 };
 
