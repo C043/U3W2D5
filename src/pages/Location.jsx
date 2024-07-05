@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
+import { Container, Row, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import LocationHeader from "../components/LocationHeader";
 import ForeCast from "../components/ForeCast";
-import Graphic from "../components/Graphic";
-import WeatherLocationForm from "../components/WeatherLocationForm";
+import WeatherDetails from "../components/WeatherDetails";
 
 const Location = () => {
   const params = useParams();
@@ -84,6 +83,7 @@ const Location = () => {
           <>
             <LocationHeader weather={weather} />
             <ForeCast futureWeather={futureWeather.list} />
+            <WeatherDetails weather={weather} />
           </>
         ) : (
           <Spinner variant="warning" className="mt-5" />
