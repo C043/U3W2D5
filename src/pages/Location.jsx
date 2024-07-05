@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import LocationHeader from "../components/LocationHeader";
 
 const Location = () => {
   const params = useParams();
 
   const [weather, setWeather] = useState(null);
+  const [futureWeather, setFutureWeather] = useState(null);
 
-  const fetchCoordinates = async () => {
+  const fetchWeather = async () => {
     try {
       const respCor = await fetch(
         "http://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -18,19 +20,8 @@ const Location = () => {
         const coordinates = await respCor.json();
         const lat = coordinates[0].lat;
         const lon = coordinates[0].lon;
-        const resp = await fetch(
-          "https://api.openweathermap.org/data/2.5/weather?lat=" +
-            lat +
-            "&lon=" +
-            lon +
-            "&units=metric&appid=82d9b7b32adef52c6e474f1919c3254a"
-        );
-        if (resp.ok) {
-          const locationObj = await resp.json();
-          setWeather(locationObj);
-        } else {
-          throw new Error("Errore nel secondo fetch");
-        }
+        fetchToday(lat, lon);
+        fetchFuture(lat, lon);
       } else {
         throw new Error("Errore nel fetch");
       }
@@ -39,14 +30,53 @@ const Location = () => {
     }
   };
 
+  const fetchToday = async (lat, lon) => {
+    try {
+      const resp = await fetch(
+        "https://api.openweathermap.org/data/2.5/weather?lat=" +
+          lat +
+          "&lon=" +
+          lon +
+          "&units=metric&appid=82d9b7b32adef52c6e474f1919c3254a"
+      );
+      if (resp.ok) {
+        const locationObj = await resp.json();
+        setWeather(locationObj);
+      } else {
+        throw new Error("Errore nel secondo fetch");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchFuture = async (lat, lon) => {
+    try {
+      const resp = await fetch(
+        "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+          lat +
+          "&lon=" +
+          lon +
+          "&units=metric&appid=82d9b7b32adef52c6e474f1919c3254a"
+      );
+      if (resp.ok) {
+        const locationObj = await resp.json();
+        setFutureWeather(locationObj);
+      } else {
+        throw new Error("Errore nel terzo fetch");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    fetchCoordinates();
+    fetchWeather();
   }, []);
 
   return weather ? (
     <Container>
-      {" "}
-      <h1>{weather.name}</h1>{" "}
+      <LocationHeader weather={weather} />
     </Container>
   ) : (
     <Spinner variant="primary" />
