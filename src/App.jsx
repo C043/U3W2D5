@@ -8,18 +8,18 @@ import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const [theme, setTheme] = useState("light");
-  const getTime = () => {
+  /*   const getTime = () => {
     setInterval(() => {
       const today = new Date();
       const hours = today.getHours();
-      setTheme(hours > 19 ? "dark" : "light");
+      setTheme(hours < 19 ? "dark" : "light");
     }, 5);
   };
   useState(() => {
     getTime();
     console.log(theme);
   }, []);
-
+ */
   return (
     <div className={theme}>
       <BrowserRouter>
