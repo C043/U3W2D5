@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Row, Spinner } from "react-bootstrap";
+import { Container, Row, Spinner } from "react-bootstrap";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import LocationHeader from "../components/LocationHeader";
 import ForeCast from "../components/ForeCast";
