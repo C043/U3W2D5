@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LocationHeader from "../components/LocationHeader";
 import ForeCast from "../components/ForeCast";
 import WeatherDetails from "../components/WeatherDetails";
@@ -10,6 +10,8 @@ const Location = ({ theme }) => {
 
   const [weather, setWeather] = useState(null);
   const [futureWeather, setFutureWeather] = useState(null);
+
+  const navigation = useNavigate();
 
   const fetchWeather = async () => {
     try {
@@ -28,6 +30,7 @@ const Location = ({ theme }) => {
         throw new Error("Errore nel fetch");
       }
     } catch (error) {
+      navigation("*");
       console.log(error);
     }
   };
@@ -48,6 +51,7 @@ const Location = ({ theme }) => {
         throw new Error("Errore nel secondo fetch");
       }
     } catch (error) {
+      navigation("*");
       console.log(error);
     }
   };
@@ -68,6 +72,7 @@ const Location = ({ theme }) => {
         throw new Error("Errore nel terzo fetch");
       }
     } catch (error) {
+      navigation("*");
       console.log(error);
     }
   };

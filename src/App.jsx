@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Location from "./pages/Location";
 import Welcome from "./components/Welcome";
 import { useState } from "react";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const [hours, setTime] = useState("");
@@ -26,7 +27,8 @@ function App() {
         <Welcome />
         <Routes>
           <Route path="/" element={<Home theme={theme} />} />
-          <Route path="/:location" element={<Location theme={theme} />} />
+          <Route path="/location/:location" element={<Location theme={theme} />} />
+          <Route path="*" element={<ErrorPage theme={theme} />} />
         </Routes>
       </BrowserRouter>
     </div>

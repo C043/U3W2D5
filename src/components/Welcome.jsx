@@ -7,7 +7,7 @@ const Welcome = () => {
   useEffect(() => {
     const location = localStorage.getItem("Location");
     if (location) {
-      navigate("/" + location);
+      navigate("/location/" + location);
     }
   }, []);
 

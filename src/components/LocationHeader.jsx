@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const LocationHeader = ({ weather }, { theme }) => {
   const [time, setTime] = useState("");
@@ -13,7 +13,7 @@ const LocationHeader = ({ weather }, { theme }) => {
       setTime(hours + ":" + minutes);
     }, 1000);
   };
-  useState(() => {
+  useEffect(() => {
     getTime();
   }, []);
   return (
